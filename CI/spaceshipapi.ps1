@@ -28,7 +28,7 @@ if ($Response.auth.auth_token) {
     }
 
     # Get unit prices
-    foreach ($Item in 'UNIVERSE','INDEX') {
+    foreach ($Item in 'UNIVERSE','INDEX','EARTH') {
         $url = 'https://api.spaceshipinvest.com.au/v0/external/saver/unit-price/graph?portfolio={0}&date=1970-01-01' -f $Item
         try {
             $IRMParams = @{
