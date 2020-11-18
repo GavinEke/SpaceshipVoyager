@@ -1,5 +1,6 @@
 var universeChartSeries = [ ]
 var indexChartSeries = [ ]
+
 $.getJSON({
    url: '/datasets/UNIVERSE.json'
 }).done(function (result, status, xhr) {
@@ -11,6 +12,15 @@ $.getJSON({
 });
 $.getJSON({
    url: '/datasets/INDEX.json'
+}).done(function (result, status, xhr) {
+   const rawIndexData = xhr.responseJSON;
+   indexChartSeries = processDataSet(rawIndexData);
+   startChart()
+}).fail(function (xhr, status, error) {
+   console.log("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+});
+$.getJSON({
+   url: '/datasets/EARTH.json'
 }).done(function (result, status, xhr) {
    const rawIndexData = xhr.responseJSON;
    indexChartSeries = processDataSet(rawIndexData);
@@ -75,6 +85,9 @@ function startChart() {
             data: universeChartSeries
          }, {
             name: 'INDEX',
+            data: indexChartSeries
+         }, {
+            name: 'EARTH',
             data: indexChartSeries
          }]
    });
