@@ -23,7 +23,7 @@ $.getJSON({
    url: '/datasets/EARTH.json'
 }).done(function (result, status, xhr) {
    const rawIndexData = xhr.responseJSON;
-   indexChartSeries = processDataSet(rawIndexData);
+   earthChartSeries = processDataSet(rawIndexData);
    startChart()
 }).fail(function (xhr, status, error) {
    console.log("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
@@ -88,7 +88,7 @@ function startChart() {
             data: indexChartSeries
          }, {
             name: 'EARTH',
-            data: indexChartSeries
+            data: earthChartSeries
          }]
    });
 };
