@@ -42,5 +42,6 @@ if ($Response.auth.auth_token) {
             exit(1)
         }
         $Response.unit_prices | ConvertTo-Json | Out-File -FilePath "./datasets/$($Item).json"
+        $Response.unit_prices | ConvertTo-Csv | Out-File -FilePath "./datasets/$($Item).csv"
     }
 }
