@@ -1,1 +1,24 @@
-
+name: CD
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  daily-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download datasets from API
+        env:
+          SPACESHIP_APIKEY: ${{ secrets.SPACESHIP_APIKEY }}
+        run: |
+          pwsh -File ./CI/spaceshipapi.ps1
+      - name: Push new datasets into master repo
+        run: |
+          git config --global user.name 'Gavin Eke'
+          git config --global user.email 'GavinEke@users.noreply.github.com'
+          git commit -am "Daily unit prices update"
+          git push
