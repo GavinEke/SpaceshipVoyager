@@ -78,13 +78,13 @@ function startChart() {
             type: 'all',
             text: 'All'
          }],
-         selected: 2
+         selected: 5
          },
          series: [{
             name: 'UNIVERSE',
             data: universeChartSeries
          }, {
-            name: 'INDEX',
+            name: 'ORIGIN (INDEX)',
             data: indexChartSeries
          }, {
             name: 'EARTH',
