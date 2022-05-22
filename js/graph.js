@@ -1,5 +1,6 @@
 var universeChartSeries = [ ]
 var indexChartSeries = [ ]
+var earthChartSeries = [ ]
 
 $.getJSON({
    url: '/datasets/UNIVERSE2.json'
